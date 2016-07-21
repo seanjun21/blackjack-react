@@ -17,29 +17,25 @@ var Game = React.createClass( {
   },
 
   onClick: function() {
-
     var randomCard = Math.floor(Math.random() * 10) + 1;
-
+    var newCardsArr = this.state.cardsArr.slice();
+    newCardsArr.push(<Card text={randomCard} />)
     this.setState({
-        cardsArr: [randomCard]
-
+        cardsArr: newCardsArr
     })
     console.log(this.state.cardsArr, "cardsArr");
   },
 
-
 	// Render Game
 	render: function() {
-
-
-
 		return (
 			<div className="table">
 				<div className="title">Lonely Black Jack</div>
+        <Button onClick={this.onClick}/>
 				<Card text={this.state.initialCard}/>
         <Card text={this.state.initialCard2}/>
         <div>{this.state.cardsArr}</div>
-				<Button onClick={this.onClick}/>
+
 			</div>
 		);
 	}
@@ -54,7 +50,6 @@ var Card = React.createClass( {
 	// var card2 = Math.floor(Math.random() * 10) + 1;
 
 	render: function() {
-
 		return (
       <div>{this.props.text}</div>
 			)
@@ -67,7 +62,7 @@ var Card = React.createClass( {
 var Button = React.createClass ({
   render: function() {
     return (
-      <button onClick={this.props.onClick} />
+      <button onClick={this.props.onClick}>Hit me</button>
     );
   }
 });
@@ -79,7 +74,6 @@ var Button = React.createClass ({
 // var Sum = React.createClass( {
 //
 // } );
-
 
 
 document.addEventListener( 'DOMContentLoaded', function() {
