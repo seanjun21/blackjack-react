@@ -62,9 +62,13 @@ var Button = React.createClass ({
 
 
 // Displays total of hands
-// var Sum = React.createClass( {
-//
-// } );
+var Sum = React.createClass( {
+	render: function() {
+		return (
+		
+		)
+	}
+} );
 
 
 
