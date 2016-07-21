@@ -19,19 +19,19 @@ var Game = React.createClass( {
   onClick: function() {
 
     var randomCard = Math.floor(Math.random() * 10) + 1;
+    var newCardsArr = this.state.cardsArr.slice();
+    newCardsArr.push(<Card key={newCardsArr.length} text={randomCard} />);
+
 
     this.setState({
-        cardsArr: [randomCard]
-
+        cardsArr: newCardsArr
     })
-    console.log(this.state.cardsArr, "cardsArr");
+    console.log(this.state.cardsArr);
   },
 
 
 	// Render Game
 	render: function() {
-
-
 
 		return (
 			<div className="table">
@@ -67,7 +67,7 @@ var Card = React.createClass( {
 var Button = React.createClass ({
   render: function() {
     return (
-      <button onClick={this.props.onClick} />
+      <button onClick={this.props.onClick} ></button>
     );
   }
 });
