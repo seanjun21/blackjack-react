@@ -3,12 +3,11 @@
 var React = require( 'react' );
 var ReactDOM = require( 'react-dom' );
 
-
 // Displays total of hands
 var Sum = React.createClass( {
     render: function() {
       return (
-      <div>'this is sum: '{this.props.number}</div>
+      <div>You have: {this.props.number}</div>
     );
   }
 } );
@@ -33,33 +32,27 @@ var Game = React.createClass( {
     return this.state.cardsArr.reduce(function(prevVal, currentVal) {
       // return (prevVal + currentVal);
       return parseInt(prevVal) + parseInt(currentVal.props.text);
-    } ,0);  //0 sets the initial value of prevVal
-
+    }, 0);  //0 sets the initial value of prevVal
   },
 
   onClick: function() {
     var randomCard = Math.floor(Math.random() * 10) + 1;
     var newCardsArr = this.state.cardsArr.slice();
     newCardsArr.push(<Card text={randomCard} />);
-    // console.log(newCardsArr, "newCardsArr");
+    console.log(newCardsArr, "newCardsArr");
     this.setState({
         cardsArr: newCardsArr
     });
     var stateArr = this.state.cardsArr;
-    //console.log(stateArr[0].props.text, "props.text");
+    //console.log(stateArr[0].props.text, "stateArr[i].props.text");
     // var initialSum = this.state.initialCard + this.state.initialCard2;
     // console.log(initialSum, "initial sum");
   },
 
 	// Render Game
 	render: function() {
-    //console.log(this.state.cardsArr, "cardsArr");
+    console.log(this.state.cardsArr, "<-- this.state.cardsArr");
     //Add a for loop to grab the value of object.props.text of each object from  this.state.cardsArr, then return sum of the values from each index to the initial sum.
-
-    // for (var i = 0; i<stateArr.length; i++) {
-    //   var
-    //   stateArr[i].props.text
-    // }
 
 		return (
 			<div className="table">
@@ -75,21 +68,14 @@ var Game = React.createClass( {
 	}
 } );
 
-
-// Generate two random numbers between 1 - 10 Math.floor(Math.random() * 10) + 1
-// Holds button function to add another random number, concatenated
-/*-- Bust when number is greater than 21 --*/
 var Card = React.createClass( {
-
 	// var card2 = Math.floor(Math.random() * 10) + 1;
-
 	render: function() {
 		return (
       <div>{this.props.text}</div>
 			)
 	}
 } );
-
 
 // Upon clicking button, generates another random number added to value
 
@@ -100,7 +86,6 @@ var Button = React.createClass ({
     );
   }
 });
-
 
 document.addEventListener( 'DOMContentLoaded', function() {
   ReactDOM.render( <Game />, document.getElementById( 'app' ) );
