@@ -4,9 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <title>BlackJack Prototype</title>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quantico" rel="stylesheet">
 </head>
 
 <body>
+    <style>
+    html {
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/poker.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-size: 100%;
+    }
+    
+    .table {
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+    }
+    
+    .title {
+        font-size: 200%;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        font-family: 'Poiret One', cursive;
+    }
+    
+    section div {
+        list-style-type: none;
+        display: inline-block;
+        margin-top: 0.2rem;
+        margin-left: 0.5rem;
+    }
+    
+    section {
+        margin: 0.7rem 0;
+    }
+    
+    .player {
+        color: blue;
+    }
+    
+    .house {
+        color: red;
+    }
+    
+    .house > div:nth-child(1) {
+        background-color: red;
+    }
+    
+    .card {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+        font-weight: bold;
+    }
+    
+    button {
+        display: inline-block;
+        margin-top: 0.3rem;
+        margin-left: 2rem;
+        float: right;
+        font-family: 'Quantico', sans-serif;
+    }
+    
+    .sum {
+        display: inline-block;
+        font-family: 'Quantico', sans-serif;
+    }
+    </style>
     <div id="app"></div>
     <script type="text/javascript" src="blackjack-react.1.0.0.js"></script>
 </body>
