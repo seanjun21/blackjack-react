@@ -4,6 +4,16 @@ var React = require( 'react' );
 var ReactDOM = require( 'react-dom' );
 
 
+// Displays total of hands
+var Sum = React.createClass( {
+    render: function() {
+      return (
+      <div>'this is sum: '{this.props.number}</div>
+    );
+  }
+} );
+
+
 var Game = React.createClass( {
 	// Callbacks/States Here
   getInitialState: function() {
@@ -12,7 +22,7 @@ var Game = React.createClass( {
       initialCard: Math.floor(Math.random() * 10) + 1,
       initialCard2: Math.floor(Math.random() * 10) + 1,
       cardsArr: [],
-      cardNumb: ''
+      cardNumb: '',
     }
   },
 
@@ -23,7 +33,9 @@ var Game = React.createClass( {
     this.setState({
         cardsArr: newCardsArr
     })
-    console.log(this.state.cardsArr, "cardsArr");
+    // var initialSum = this.state.initialCard + this.state.initialCard2;
+    // console.log(initialSum, "initial sum");
+    // console.log(this.state.cardsArr, "cardsArr");
   },
 
 	// Render Game
@@ -32,6 +44,7 @@ var Game = React.createClass( {
 			<div className="table">
 				<div className="title">Lonely Black Jack</div>
         <Button onClick={this.onClick}/>
+        <Sum number={this.state.initialCard + this.state.initialCard2} />
 				<Card text={this.state.initialCard}/>
         <Card text={this.state.initialCard2}/>
         <div>{this.state.cardsArr}</div>
@@ -66,14 +79,6 @@ var Button = React.createClass ({
     );
   }
 });
-
-//
-//
-//
-// // Displays total of hands
-// var Sum = React.createClass( {
-//
-// } );
 
 
 document.addEventListener( 'DOMContentLoaded', function() {
