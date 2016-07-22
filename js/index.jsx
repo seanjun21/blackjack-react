@@ -29,17 +29,27 @@ var Game = React.createClass( {
   onClick: function() {
     var randomCard = Math.floor(Math.random() * 10) + 1;
     var newCardsArr = this.state.cardsArr.slice();
-    newCardsArr.push(<Card text={randomCard} />)
+    newCardsArr.push(<Card text={randomCard} />);
+    // console.log(newCardsArr, "newCardsArr");
     this.setState({
         cardsArr: newCardsArr
-    })
+    });
+    var stateArr = this.state.cardsArr;
+    console.log(stateArr[0].props.text, "props.text");
     // var initialSum = this.state.initialCard + this.state.initialCard2;
     // console.log(initialSum, "initial sum");
-    // console.log(this.state.cardsArr, "cardsArr");
   },
 
 	// Render Game
 	render: function() {
+    // console.log(this.state.cardsArr, "cardsArr");
+    //Add a for loop to grab the value of object.props.text of each object from  this.state.cardsArr, then return sum of the values from each index
+
+    // for (var i = 0; i<stateArr.length; i++) {
+    //   var
+    //   stateArr[i].props.text
+    // }
+
 		return (
 			<div className="table">
 				<div className="title">Lonely Black Jack</div>
