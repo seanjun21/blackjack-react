@@ -13,17 +13,28 @@ var Sum = React.createClass( {
   }
 } );
 
-
 var Game = React.createClass( {
 	// Callbacks/States Here
+
+  //Create initial array with two cards already generated #22
   getInitialState: function() {
+    var initialCards = [<Card text={Math.floor(Math.random() * 10) + 1} />,  <Card text={Math.floor(Math.random() * 10) + 1} />];
 
     return {
-      initialCard: Math.floor(Math.random() * 10) + 1,
-      initialCard2: Math.floor(Math.random() * 10) + 1,
-      cardsArr: [],
+      // initialCard: Math.floor(Math.random() * 10) + 1,
+      // initialCard2: Math.floor(Math.random() * 10) + 1,
+      cardsArr: initialCards,
       cardNumb: '',
     }
+  },
+
+//Create this method as a property of the object
+  getTotCardSum: function() {
+    return this.state.cardsArr.reduce(function(prevVal, currentVal) {
+      // return (prevVal + currentVal);
+      return parseInt(prevVal) + parseInt(currentVal.props.text);
+    } ,0);  //0 sets the initial value of prevVal
+
   },
 
   onClick: function() {
@@ -35,15 +46,15 @@ var Game = React.createClass( {
         cardsArr: newCardsArr
     });
     var stateArr = this.state.cardsArr;
-    console.log(stateArr[0].props.text, "props.text");
+    //console.log(stateArr[0].props.text, "props.text");
     // var initialSum = this.state.initialCard + this.state.initialCard2;
     // console.log(initialSum, "initial sum");
   },
 
 	// Render Game
 	render: function() {
-    // console.log(this.state.cardsArr, "cardsArr");
-    //Add a for loop to grab the value of object.props.text of each object from  this.state.cardsArr, then return sum of the values from each index
+    //console.log(this.state.cardsArr, "cardsArr");
+    //Add a for loop to grab the value of object.props.text of each object from  this.state.cardsArr, then return sum of the values from each index to the initial sum.
 
     // for (var i = 0; i<stateArr.length; i++) {
     //   var
@@ -54,10 +65,10 @@ var Game = React.createClass( {
 			<div className="table">
 				<div className="title">Lonely Black Jack</div>
         <Button onClick={this.onClick}/>
-        <Sum number={this.state.initialCard + this.state.initialCard2} />
-				<Card text={this.state.initialCard}/>
-        <Card text={this.state.initialCard2}/>
-        <div>{this.state.cardsArr}</div>
+        <Sum number={this.getTotCardSum()} />
+				{/*<Card text={this.state.cardsArr[0]}/>
+        <Card text={this.state.cardsArr[1]}/>*/}
+      <div>{this.state.cardsArr}</div>
 
 			</div>
 		);
